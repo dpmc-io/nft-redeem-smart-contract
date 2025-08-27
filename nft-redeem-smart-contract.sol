@@ -48,7 +48,7 @@ contract REDEEM is IERC721Receiver, Ownable(msg.sender), ReentrancyGuard {
     event UpdatePayoutAddress(address indexed newAddress);
 
     constructor() {
-        ERC721 = 0x2C0ebDbF0f96293f4A5E13602DC37C424D978740;
+        ERC721 = 0x4515b54Ca126C52A5C25d98c2e5B94EDd59971Cc;
         ERC20 = 0xfFe5413E1595fFb68564Fc2205a84D95656F228D;
         PAYOUT = 0x900c6f8AAcd4AA70F1477Be27CcbbD4bf9CC011E;
         signer = 0x143e5C4160Eaef1c01251D23F2A04F0b3e9d6c10;
@@ -134,17 +134,17 @@ contract REDEEM is IERC721Receiver, Ownable(msg.sender), ReentrancyGuard {
         emit UpdateBlacklistedTokenId(tokenId, _isBlacklisted);
     }
 
-    function updateCertificateAddress(address _address) public onlyOwner {
+    function updateCertificateAddress(address _address) public onlyAdmin {
         ERC721 = _address;
         emit UpdateCertificateAddress(_address);
     }
 
-    function updatePaymentAddress(address _address) public onlyOwner {
+    function updatePaymentAddress(address _address) public onlyAdmin {
         ERC20 = _address;
         emit UpdatePaymentAddress(_address);
     }
 
-    function updatePayoutAddress(address _address) public onlyOwner {
+    function updatePayoutAddress(address _address) public onlyAdmin {
         PAYOUT = _address;
         emit UpdatePayoutAddress(_address);
     }
